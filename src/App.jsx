@@ -33,9 +33,6 @@ export default function App() {
   function handleDeleteWatched(id) {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
-
-
-  // useEffect(function () {
   //   const controller = new AbortController();
 
   //   async function fetchMovies() {
@@ -251,8 +248,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
   //   setIsTop(imdbRating > 8);
   // }, [imdbRating]);
 
-  const isTop = imdbRating > 8;
-  console.log(isTop);
+  // const isTop = imdbRating > 8;
 
   useKey("Escape", onCloseMovie);
 
@@ -272,7 +268,7 @@ function MovieDetails({ selectedId, onCloseMovie, onAddWatched, watched }) {
     async function fetchMovieDetails() {
       try {
         setIsLoading(true);
-        const res = await fetch(`http://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`);
+        const res = await fetch(`https://www.omdbapi.com/?apikey=${KEY}&i=${selectedId}`);
         const data = await res.json();
         setMovie(data);
         setIsLoading(false);
